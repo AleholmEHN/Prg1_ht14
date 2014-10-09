@@ -1,0 +1,47 @@
+<script src="http://spelprogrammering.nu/simple.js">
+
+    function start()
+    {
+        minFarg = "red";    // Färg att måla med
+        minPensel = "c";        // Cirkel som default       
+        
+        updatesPerSecond = 2000;
+    }
+    
+    
+    function update()
+    {
+        // Hit kommer vi 30 ggr/ sekund
+        if (mouse.left)     // Om vänster knapp tryckt
+        {
+            if (minPensel == "c")
+            {
+                circle(mouse.x, mouse.y, 10, minFarg);
+            }
+            else
+            {
+                rectangle(mouse.x, mouse.y, 10, 10, minFarg);
+            }
+        }
+        if (mouse.right)
+        {
+            circle(mouse.x, mouse.y, 10, "white");
+        }
+        
+        // Kolla vilken knapp som tryckts ned och ändra minFarg
+        
+        
+        // Om tangenten för annan pensel tryckts ned  ändra minPensel till .....
+        
+        
+        
+        
+    }
+
+
+
+
+
+
+
+</script>

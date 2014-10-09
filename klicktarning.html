@@ -1,0 +1,78 @@
+<script src="http://www.spelprogrammering.nu/simple.js">
+
+    
+        function tarning()
+    {
+    // En simulerad tärning
+    
+    tal = random(6) + 1;
+    
+    rectangle(30, 30,140, 140,"blue");
+    
+    if (tal == 1 || tal == 3 || tal == 5)
+    {
+        circle(100, 100, 10, "black");
+        if (tal == 3 || tal == 5)
+        {
+            circle(50, 150, 10, "black");
+            circle(150, 50, 10, "black");
+            if (tal == 5)
+            {
+                circle(50, 50, 10, "black");
+                circle(150, 150,10, "black");
+            }
+        }
+    }
+    else    // Alltså 2, 4 eller 6
+    {
+        circle(50, 150, 10, "black");
+        circle(150, 50, 10, "black");
+        if (tal == 4 || tal == 6)
+        {
+            circle(50, 50, 10, "black");
+            circle(150, 150,10, "black");
+            if (tal == 6)
+            {
+                circle(50, 100, 10, "black");
+                circle(150, 100,10, "black");
+            }
+        }
+        
+    }
+    
+    }
+    
+    var rectX = 300;
+    var rectY = 100;
+    var sizeX = 250;
+    var sizeY = 40;
+    
+    function start()
+    {
+        tarning();
+        drawText();
+    }
+    
+    function drawText()
+    {
+        rectangle(rectX, rectY, sizeX, sizeY, "yellow");
+        text(rectX+10, rectY + 25, 20, "Slå tärningen", "black");
+    }
+    
+    function update()
+    {
+        if (mouse.left)
+        {
+            if ((mouse.x > rectX) && (mouse.x < rectX+sizeX) && (mouse.y > rectY) && (mouse.y < rectY + sizeY))
+            {
+                clearScreen();
+                tarning();      // Slumpa och rita tärning
+                drawText();
+                playSound("wheee.wav", 1);
+            }
+        }
+    }
+ 
+
+
+</script>

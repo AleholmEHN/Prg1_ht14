@@ -1,0 +1,61 @@
+<script src="http://spelprogrammering.nu/simple.js">
+    
+    
+    function start()
+    {
+        ballX = 0;
+        ballY = 0;    // Variabler /lådor till bollens x och y -värde
+        
+    }
+    
+    
+    
+    
+    function update()
+    {
+        clearScreen();      // Sudda skärmen först
+        
+        if (keyboard.right)     // Om högerpil är nedtryckt
+        {
+             ballX += 5;
+            
+            if (ballX > totalWidth)     // Om jag är utanför rutan
+            {
+                ballX -= 5;         // Jag  vill inte öka
+            }
+        }
+        
+        if (keyboard.left)
+        {
+            ballX -= 5;
+            
+            if (ballX < 0)      // Jag har kört i väggen till vänster.
+            {
+                ballX +=5;      // Tillbaka till det som var förut
+            }
+        }
+        
+        
+        if (keyboard.up)
+        {
+            //ballY--;
+            ballY -= 5;
+        }
+        
+        if (keyboard.down)
+        {
+            //ballY++;
+            ballY += 5;
+        }
+        
+        
+        
+        circle(ballX, ballY, 25, "red");    // Rita en boll
+    }
+    
+    
+    
+    
+    
+
+</script>

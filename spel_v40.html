@@ -1,0 +1,132 @@
+<script src="http://spelprogrammering.nu/simple.js">
+
+    var s1 = 0;     // Spelare 1 0 poäng
+    var s2 = 0;     // Spelare 2 0 poäng
+    
+    
+    function start()
+    {
+        target = {x:0, y:0, size: 20, color:"red"};
+        target.x = random(totalWidth);
+        target.y = random(totalHeight);
+        farg = random(3);
+        if (farg == 0)
+        {
+            target.color = "red";
+        }
+        else if (farg == 1)
+        {
+            target.color = "blue";
+        }
+        else 
+        {
+            target.color = "green";
+        }
+        
+        pl1 = {x:totalWidth/2, y: totalHeight/2, size:20};
+        pl2 = {x: pl1.x +pl1.size, y:pl1.y, size:pl1.size};
+        speed = 10;
+           
+    }
+    
+    function update()
+    {
+        fill("pink");
+        
+        // Flytta cirklarna mha tangenterna
+        if (keyboard.up)
+        {
+            pl1.y -= speed;
+            if (pl1.y < 0 + pl1.size)
+            {
+                pl1.y = pl1.size;
+            }
+        }
+        if (keyboard.down)
+        {
+            pl1.y += speed;
+            if (pl1.y > totalHeight - pl1.size)
+            {
+                pl1.y = totalHeight - pl1.size;
+            }
+        }
+        if (keyboard.right)
+        {
+            pl1.x += speed;
+            if (pl1.x > totalWidth - pl1.size)
+            {
+                pl1.x = totalWidth - pl1.size;
+            }
+        }
+        if (keyboard.left)
+        {
+            pl1.x -= speed;
+            if (pl1.x < 0 + pl1.size)
+            {
+                pl1.x = pl1.size;
+            }
+        }
+
+        
+        if (keyboard.w)
+        {
+            pl2.y -= speed;
+            if (pl2.y < 0 + pl2.size)
+            {
+                pl2.y = pl2.size;
+            }
+        }
+        if (keyboard.s)
+        {
+            pl2.y += speed;
+            if (pl2.y > totalHeight - pl2.size)
+            {
+                pl2.y = totalHeight - pl2.size;
+            }
+        }
+        if (keyboard.d)
+        {
+            pl2.x += speed;
+            if (pl2.x > totalWidth - pl2.size)
+            {
+                pl2.x = totalWidth - pl2.size;
+            }
+        }
+        if (keyboard.a)
+        {
+            pl2.x -= speed;
+            if (pl2.x < 0 + pl2.size)
+            {
+                pl2.x = pl2.size;
+            }
+        }
+        
+        // KOntrollera kollision
+        if (distance(pl1.x, pl1.y, target.x, target.y) < (target.size + pl1.size)/2)
+        {
+            s1++;       // S1 har fångat
+            start();
+        }
+ 
+        if (distance(pl2.x, pl2.y, target.x, target.y) < (target.size + pl2.size)/2)
+        {
+            s2++;       // S1 har fångat
+            start();
+        }
+        
+        
+        
+        circle(target.x, target.y, target.size, target.color);
+        circle(pl1.x, pl1.y, pl1.size, "yellow");
+        circle(pl2.x, pl2.y, pl2.size, "black");
+        text(50, 50, 20, "Spelare 1: " + s1, "black");
+        text(totalWidth - 250, 50, 20, "Spelare 2: " + s2, "black");
+         
+    }
+
+
+
+
+
+
+</script>

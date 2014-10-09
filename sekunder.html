@@ -1,0 +1,18 @@
+<meta charset="utf-8">
+<script src="http://spelprogrammering.nu/simple.js">
+
+function start()
+{
+    var sek = prompt("Ange antal sekunder");
+    
+    var hour = Math.floor(sek/3600);
+    sek = sek % 3600;
+    min = Math.floor(sek/60);
+    sek = sek % 60;
+    alert("Det blir " + hour + " h, " + min + " min och " + sek + " sekunder");
+    
+    
+    
+}
+
+</script>

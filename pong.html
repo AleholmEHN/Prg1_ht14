@@ -1,0 +1,119 @@
+<script src="http://spelprogrammering.nu/simple.js">
+
+    spelare1 = 0;   // Noll poäng spelare1
+    spelare2 = 0;   // Noll poäng från början
+    
+    function start()
+    {
+        ball = {x: totalWidth/2, y: totalHeight/2, size:20, xSpeed:5, ySpeed:5};
+        
+        paddles = { speed:15, width: 20, height:80, distanceToWall:20};
+        
+        p1 = {x:paddles.distanceToWall , y: totalHeight/2};   // Vänster paddel
+        p2 = {x: totalWidth - paddles.distanceToWall - paddles.width, y: p1.y}; // Höger paddel
+        
+        if (random(2) == 0)     // Låt x-riktningen ändras
+        {
+            ball.xSpeed *= (-1);
+        }
+        if (random(2) == 0) // Låt y-riktningen ändras
+        {
+            ball.ySpeed *= (-1);
+        }
+    }
+    
+    function update()
+    {
+        clearScreen();
+        
+        // Flytta paddles
+        if (keyboard.up)
+        {
+            p2.y -= paddles.speed;  // p2.y = p2.y - paddles.speed 
+            if (p2.y < 0 )   // Vi har slagit i taket
+            {
+                p2.y += paddles.speed;  // Ändra tillbaka
+            }
+        }
+        if (keyboard.down)
+        {
+            p2.y += paddles.speed;
+            if (p2.y > totalHeight - paddles.height)     // Om slår i botten
+            {
+                p2.y -= paddles.speed;  
+            }
+        }
+        if (keyboard.w)
+        {
+            p1.y -= paddles.speed;
+            if (p1.y < 0)   // Vi har slagit i taket
+            {
+                p1.y += paddles.speed;  // Ändra tillbaka
+            }
+        }
+        if (keyboard.s)
+        {
+            p1.y += paddles.speed;
+            if (p1.y > totalHeight - paddles.height)   // Vi har slagit i botten
+            {
+                p1.y -= paddles.speed;  // Ändra tillbaka
+            }
+ 
+        }
+        
+        ball.x = ball.x + ball.xSpeed;
+        ball.y = ball.y + ball.ySpeed;
+        
+        // Har bollen kommit till kanten?
+        if (ball.y < 0 + ball.size || ball.y > totalHeight -ball.size) // Om bollens y är mindre än 0 ELLER större än totalHeight
+        {
+            ball.ySpeed = ball.ySpeed*(-1);     // Precis tvärtom
+        }
+        
+        // Kontrollera om bollen träffar paddeln
+        if ( (ball.x < p1.x +paddles.width + ball.size) &&
+            (ball.y > p1.y ) &&
+            (ball.y < p1.y + paddles.height))
+        {
+            // Vi har träffat paddeln
+            ball.xSpeed = ball.xSpeed*(-1);   // Studsa
+        }
+        
+        if ( (ball.x > p2.x - ball.size) &&
+            (ball.y > p2.y ) &&
+            (ball.y < p2.y + paddles.height))
+        {
+            // Vi har träffat paddeln
+            ball.xSpeed = ball.xSpeed*(-1);   // Studsa
+        }
+        
+        if (ball.x < 0)
+        {
+            // Spelare2 får poäng.
+            spelare2++;
+            start();
+        }
+        if (ball.x > totalWidth)
+        {
+            // Spelare 1 får poäng
+            spelare1++;
+            start();
+        }
+               
+        rectangle(p1.x, p1.y, paddles.width, paddles.height, "red");
+        rectangle(p2.x, p2.y, paddles.width, paddles.height, "red");
+        line(totalWidth/2, 0, totalWidth/2, totalHeight, 5, "blue");
+        circle(ball.x, ball.y, ball.size, "black");
+        text(0, 30, 20,  "Spelare1: " + spelare1, "green");
+        text(totalWidth -200, 30, 20, "Spelare2: " + spelare2, "green");
+        
+    }
+
+
+
+
+
+
+
+
+</script>

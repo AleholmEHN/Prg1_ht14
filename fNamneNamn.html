@@ -1,0 +1,14 @@
+<meta charset="utf-8">
+<script src="http://spelprogrammering.nu/simple.js">
+
+function start()
+{
+    var mittNamn = prompt("Vad heter du, förnamn och efternamn, tack!");
+    var plats = mittNamn.indexOf(" ");
+    var fName = mittNamn.substr(0,plats);
+    var eName = mittNamn.substr(plats+1);
+    alert("Du heter: " + fName + " i förnamn\n" + "och " + eName + " i efternamn");
+
+}
+
+</script>

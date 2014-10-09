@@ -1,0 +1,64 @@
+<script src="http://spelprogrammering.nu/simple.js">
+
+    function start()    // Detta händer när man startar
+    {
+        // Skapa en katt som har flera egenskaper
+        cat = { x: 100, y:100, speed:10};
+        // Vi har skapat en katt med x-position=100
+        // y-position = 100 och hastighet =10
+        
+        hideMouse();
+        
+    }
+    
+    function update()
+    {
+        clearScreen();
+        
+        if (keyboard.left)
+        {
+            cat.x = cat.x - cat.speed;
+            // Minska x-värdet med speed
+        }
+        
+        if (keyboard.right)
+        {
+            cat.x = cat.x + cat.speed;
+        }
+        
+        if (keyboard.up)
+        {
+            cat.y = cat.y - cat.speed;
+        }
+        
+        if (keyboard.down)
+        {
+            cat.y = cat.y + cat.speed;
+        }
+        
+        circle(cat.x, cat.y, 20, "black"); // Rita katt
+        
+        circle(mouse.x, mouse.y, 20, "red");  //Rita ut råttan
+        
+        // Kontrollera om de har kolliderat!
+        if (Math.abs( cat.x - mouse.x) < 40 && Math.abs(cat.y-mouse.y) < 40)
+        {
+            // Om kattens x-värdet minus musens x är mindre än 40 
+            // OCH
+            // om kattens y-värde minus musens y är mindre än 40 
+            
+            
+            stopUpdate();
+            showMouse();
+        }
+        
+        
+        
+        
+    }
+
+
+
+
+
+</script>
