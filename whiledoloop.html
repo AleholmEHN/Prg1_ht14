@@ -1,0 +1,83 @@
+<script src="http://spelprogrammering.nu/simple.js">
+
+    
+    var xPos = 100;
+    var yPos = 100;
+    var raknare = 3;   // Håller ordning på hur många gånger vi loopar
+    
+/*    while (raknare < 3)
+    {
+        circle(xPos, yPos, 30, "red");
+    }*/
+    
+    
+/*    do 
+    {
+        circle(xPos, yPos, 30, "red");
+        xPos += 100;
+    } while (raknare < 3 );*/
+    
+    
+    
+    
+/*    var antal = prompt("Hur många bollar?");
+    var xPos = 100;
+    var yPos = 100;
+    
+    for (var raknare = 1; raknare <= antal ; raknare++)
+    {
+        circle(xPos, yPos, 50, "red");
+        xPos += 100;
+        
+        // Kolla om numret på bollen jämnt delbart med 10
+        if (raknare % 10 == 0)
+        {
+            yPos = yPos + 100;  // Byt rad
+            xPos = 100;         // Nollställ x-positionen.
+        }
+    }
+    */
+    
+    // En bils värde minskar med 15% varje år.
+    // Från början är bilen värd 200 000 kr
+    // Hur lång tid tar det tills den är värd 50 000 kr?
+    
+/*    var pris = 100000;
+    var minskning = 0.90;   // Punkt på decimaler
+    var antalAr = 0;   // Hur många år det gått
+    var slutVarde = 50000;   // hur mycket bilen ska vara värd
+    
+    while ( pris > slutVarde)
+    {
+        pris = pris*minskning;      // nytt pris/värde
+        antalAr++;
+    }
+    alert("Det blev " + antalAr + " år");
+*/
+    
+    // Multiplikationstabell
+    var rad = 10;  // 10 rader
+    var kol = 10;   // 10 kolumner
+    
+    var xPos = 50;      // var texten ska skrivas
+    var yPos = 50;      // var texten ska skrivas
+    var size = 20;      // textstorlek
+    
+    for (var i = 1; i <= rad; i++)
+    {
+        for (var j= 1; j <= kol; j++)
+        {
+            text(xPos,yPos, size, i*j, "black");
+            xPos = xPos + size*3;
+        }
+        // Byt rad
+        yPos = yPos + size*2;
+        xPos = 50;
+    }
+
+
+
+
+
+
+</script>
