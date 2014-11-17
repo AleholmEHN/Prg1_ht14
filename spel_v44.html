@@ -1,0 +1,109 @@
+<script src="http://spelprogrammering.nu/simple.js">
+
+    
+/* Del 1
+
+function Boll()
+    {
+        this.x = random(totalWidth);
+        this.y = 0;
+        this.size = 20;
+        this.speed = random(10) + 1;
+        this.isHit = false;
+        
+        this.update = function()
+        {
+            if (!this.isHit)
+            {
+                circle(this.x, this.y, this.size, "red");
+                this.y += this.speed;
+                if (this.y > totalHeight)
+                    this.isHit = true;
+            }
+            
+        }
+    }
+    
+    function start()
+    {
+        minBoll = new Boll();
+    }
+    
+    function update()
+    {
+        clearScreen();
+        minBoll.update();
+    }
+*/    
+    
+    
+    var points = 0;
+
+    function Boll()
+    {
+        this.x = random(totalWidth);
+        this.y = 0;
+        this.size = 20;
+        this.speed = random(10) + 1;
+        this.isHit = false;
+        this.color = mixColor(random(256), random(256), random(256));
+        
+        this.update = function()
+        {
+            if (!this.isHit)
+            {
+                circle(this.x, this.y, this.size, this.color);
+                this.y += this.speed;
+                if ((this.y > totalHeight) || (this.y < 0))
+                {
+                    this.speed *= -1;
+                }
+                if (mouse.left &&(distance(mouse.x, mouse.y, this.x, this.y) < 20))
+                {
+                    this.isHit = true;
+                    points++;
+                }
+            }
+            
+        }
+    }
+    
+    function start()
+    {
+        minaBollar = [];
+        minaBollar[0] = new Boll();
+        ticker = 100;
+    }
+    
+    function update()
+    {
+        clearScreen();
+        for (var i = 0; i < minaBollar.length; i++)
+            minaBollar[i].update();
+        ticker--;
+        if (ticker == 0)
+        {
+            var antal = minaBollar.length;
+            minaBollar[antal] = new Boll();     // Lägg till nya bollar
+            ticker = 100;
+        }
+        // Kontrollera om det är fler än 20 bollar. I så fall Gameover
+        var antal = 0;
+        for (var i = 0; i < minaBollar.length; i++)
+        {
+            if (!minaBollar[i].isHit)
+            {
+                antal++;
+            }
+        }
+        if (antal > 20)
+        {
+            stopUpdate();
+            text(100, totalHeight/2, 50, "Game Over", "green");
+        }
+        text(50, 50, 20, "Poäng: " + points, "black");
+    }
+ 
+
+
+</script>

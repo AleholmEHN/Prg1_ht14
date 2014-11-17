@@ -1,0 +1,21 @@
+<script src="http://spelprogrammering.nu/simple.js">
+
+    var xPos = 100;
+    var yPos = 100;
+    for (var i = 0; i < 5; i++)
+    {
+        for (var j = 0; j < i ; j++)
+        {
+            xPos += 40;
+        }
+        for (var j = i; j < 5; j++)
+        {
+            circle(xPos, yPos, 20, "black");
+            xPos += 40;
+        }
+        yPos += 40;
+        xPos = 100;
+    }
+
+
+</script>

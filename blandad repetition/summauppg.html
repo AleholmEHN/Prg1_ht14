@@ -1,0 +1,15 @@
+<script src="http://spelprogrammering.nu/simple.js">
+
+    var antal = prompt("Hur många?");
+    var text = "";
+    var summa = 0;
+    
+    for (var i = 1; i <= antal; i++)
+    {
+        summa += i;
+        text = text + i + "+";
+    }
+    text = text.substr(0,text.length-1);
+    alert(text + "=" + summa);
+
+</script>

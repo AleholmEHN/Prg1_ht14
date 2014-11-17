@@ -1,0 +1,28 @@
+<script src="http://www.spelprogrammering.nu/simple.js">
+
+    // 1 1 2 3 5 8 osv. klarar 1000g
+    // 1 1 2 3 5 8 13 21 34 55 89 114  233 347 580
+    
+    var unge1 = 1;
+    var unge2 = 1;
+    var totalVikt = unge1 + unge2;
+    var antal = 2;
+    unge1 = unge1 + unge2;
+    
+    while (totalVikt <= 1000)
+    {
+        if (unge1 < unge2)
+        {
+            unge1 = unge1 + unge2;
+            totalVikt += unge1;
+        }
+        else
+        {
+            unge2 = unge2 + unge1;
+            totalVikt += unge1;
+        }
+        antal++;
+    } 
+    alert("Det blir " + antal + " ungar");
+
+</script>

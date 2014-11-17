@@ -1,0 +1,59 @@
+<script src="http://spelprogrammering.nu/simple.js">
+    
+/*    var arrX = [];
+    arrX[0] = 100;
+    arrX[1] = 150;
+    arrX[2] = 200;
+    
+    var arrY = [];
+    arrY[0] = 100;
+    arrY[1] = 150;
+    arrY[2] = 300;
+    
+    
+     
+    function update()
+    {
+        for (var i = 0; i < arrX.length; i++)
+        {
+            circle(arrX[i], arrY[i], 20, "red");
+        }
+    }*/
+
+    
+    var antal = 10;
+    var arrX = [];
+    var arrY = [];
+    
+    function start()
+    {
+        for (var i = 0; i < antal; i++)
+        {
+            arrX[i] = random(totalWidth);
+            arrY[i] = random(totalHeight);
+        }
+        updatesPerSecond= 5;
+    }
+    
+    function update()
+    {
+        clearScreen();
+        for (var i = 0; i < arrX.length; i++)
+        {
+            circle(arrX[i], arrY[i], 20, mixColor(random(256), random(256), random(256)));
+            arrX[i] += random(100) - 50;
+            arrY[i] += random(100) - 50;
+            if ((arrX[i] < 0) ||(arrX[i] > totalWidth)) 
+                arrX[i] = random(totalWidth);
+            if ((arrY[i] < 0) ||(arrY[i] > totalHeight)) 
+                arrY[i] = random(totalHeight);
+            
+        }
+        
+    }
+    
+    
+    
+    
+    
+</script>

@@ -1,0 +1,22 @@
+<script src="http://spelprogrammering.nu/simple.js">
+    
+    // Beräkna medelvärde av inmatade siffror.
+    var varden = [];
+    
+    var antal = parseInt(prompt("Hur många värden?"));
+    
+    for (var i = 0; i < antal; i++)
+    {
+        varden[i] = parseInt(prompt("Ange ett värde"));
+    }
+    
+    var summa = 0;
+    for (var i = 0; i < antal; i++)
+    {
+        summa = summa + varden[i];
+    }
+    alert("Medelvärdet är: " + summa/antal);
+    
+    
+    
+</script>

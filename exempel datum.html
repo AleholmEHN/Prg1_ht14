@@ -1,0 +1,27 @@
+<script src="http://www.spelprogrammering.nu/simple.js">
+
+    var datNu = new Date();
+    var upplysning = "Det är ";
+    var arrVeckan = new Array("sön", "mån", "tis", "ons", "tors", "fre", "lör");
+    var veckodag = datNu.getDay();
+    var timmen = datNu.getHours
+
+    
+    upplysning = upplysning + arrVeckan[veckodag] + "dag\n";
+    skolanSlut = "Skolan är slut för idag\n Hoppas kvällen blir lyckad!";
+    kollaSchemat = "Bäst att kolla schemat\n Ska du vara på en lektion?";
+    if (veckodag == 0 || veckodag == 6)     // lördag eller söndag
+    {
+        upplysning += "Du är ledig idag";
+    }
+    else if (timmen >= 16  && timmen < 22)
+    {   
+        upplysning += skolanSlut;
+    }
+    else
+    {
+        upplysning += kollaSchemat;
+    }
+
+    alert(upplysning);
+</script>

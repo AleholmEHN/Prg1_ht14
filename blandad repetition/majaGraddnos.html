@@ -1,0 +1,18 @@
+<script src="http://spelprogrammering.nu/simple.js">
+
+    var namn = prompt("Ange namn");
+    var mellanslag = namn.indexOf(" ");
+    
+    var fBokstav = namn.substr(0, 1);
+    var eBokstav = namn.substr(mellanslag+1, 1);
+    
+    alert(namn + " har initialerna " + fBokstav + eBokstav);
+    
+    var fName = namn.substr(0, mellanslag);
+    var eName = namn.substr(mellanslag+1);
+    alert("Förnamn: " + fName + " Efternamn: " + eName);
+    
+    
+
+
+</script>
