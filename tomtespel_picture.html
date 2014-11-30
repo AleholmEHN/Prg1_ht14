@@ -1,0 +1,75 @@
+<script src="http://spelprogrammering.nu/simple.js">
+
+function Tomte()
+{
+    this.x = random(totalWidth-50) +50;
+    this.y = random(totalHeight-50) +50;
+    this.dead = false;
+    this.nbrUpdates = 0;
+    
+    this.update = function()
+    {
+        this.nbrUpdates++;
+        save();
+        translate(this.x, this.y);
+ //       circle(0,0,20,"red");
+        scale(0.5, 0.5);
+        picture(0,0,"tomte.gif");
+        restore();
+    };
+}
+    
+    
+function start()
+{
+    minTomte = [];
+    tomteKilled = 0;
+    loop = 0;
+}
+    
+function update()
+{
+    fill("black");
+    for (var i = 0; i < minTomte.length; i++)
+    {
+        var tempTomte = minTomte[i];
+        if (!tempTomte.dead)
+        {
+            tempTomte.update();
+
+            if (mouse.left && (distance(mouse, tempTomte) < 20))
+            {
+                tomteKilled++;
+                tempTomte.dead = true;
+            }
+            if (tempTomte.nbrUpdates > 100)
+            {
+                tempTomte.dead = true;  // Dölj igen
+                tomteKilled--;
+            }
+        }
+    }
+    loop++;
+    if (loop % 20 == 0)
+    {
+        minTomte.push(new Tomte());
+    }
+    if (tomteKilled > 20)
+    {
+        text(100, totalHeight/2, 20, "Du vann", "green");
+        stopUpdate();
+    }
+    if (tomteKilled < -10)
+    {
+        text(100, totalHeight/2, 20, "Looser", "red");
+        stopUpdate();
+    }
+    text(100,100,20, "Tomtar killed " + tomteKilled, "white");
+}
+    
+
+
+
+
+
+</script>

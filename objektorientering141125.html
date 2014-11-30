@@ -1,0 +1,56 @@
+<script src="http://spelprogrammering.nu/simple.js">
+
+
+    function Zombie(startX, startY, xSpeed)
+    {
+        this.x = startX;    // Spara det jag får i min egna x
+        this.y = startY;    // Spara vårt y-värde
+        this.xSpeed = xSpeed;   
+        
+        this.update = function()
+        {
+            this.x = this.x + this.xSpeed;  // Ändra x
+            save();     // Spara koordinatsystemet
+            // Rita en zombie
+            translate(this.x, this.y);
+            rectangle(3,30, 23, 65, "lightgreen");
+            rectangle(3, 15, 23, 65, "gray");
+            circle(15, 0, 20, "lightgreen");
+            circle(0,0,3, "red");
+            rectangle(-35, 20, 30, 14, "lightgreen");
+            rectangle(-20, 20, 30, 14, "gray");              
+            restore();      // ställer tillbaka
+        };      
+    }
+    
+    function start()
+    {
+ /*       olof = new Zombie(100, 100, -1);
+        eric = new Zombie(300, 400, 2);*/
+        minaZombies = [];       // Skapa en "byrålåda"
+/*        minaZombies[0] = new Zombie(100, 200, -3);
+        minaZombies[1] = new Zombie(300, 500, -2);
+        minaZombies[2] = new Zombie(600, 800, -1);
+        minaZombies[3] = new Zombie(800, 100, -2);
+        minaZombies[4] = new Zombie(900, 600, -3);
+        */
+        for (var i = 0; i < 100; i++)
+        {
+            minaZombies.push(new Zombie(totalWidth + random(200), random(totalHeight), -(1+2*random(100) / 100)));
+        }
+        
+    }
+    
+    function update()
+    {
+        clearScreen();
+ /*       olof.update();
+        eric.update();*/
+        for (var i = 0; i < minaZombies.length ; i++)
+        {
+            minaZombies[i].update();
+        }
+    }
+    
+
+</script>

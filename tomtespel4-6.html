@@ -1,0 +1,45 @@
+<script src="http://spelprogrammering.nu/simple.js">
+
+function Tomte()
+{
+    this.x = random(totalWidth-50) +50;
+    this.y = random(totalHeight-50) +50;
+    this.dead = false;
+    
+    this.draw = function()
+    {
+        save();
+        translate(this.x, this.y);
+        circle(0,0,20,"red");
+        restore();
+    };
+}
+    
+    
+function start()
+{
+    minTomte = new Tomte();
+    tomteKilled = 0;
+//    minTomte.draw();
+}
+    
+function update()
+{
+    clearScreen();
+    if (!minTomte.dead)
+        minTomte.draw();
+    
+   
+    if (mouse.left && getPixel(mouse.x, mouse.y).red > 0)
+    {
+        tomteKilled++;
+        minTomte.dead = true;
+    }
+}
+    
+
+
+
+
+
+</script>

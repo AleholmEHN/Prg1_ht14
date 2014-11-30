@@ -1,0 +1,29 @@
+<script src="http://spelprogrammering.nu/simple.js">
+
+function Tomte()
+{
+    this.x = random(totalWidth-50) +50;
+    this.y = random(totalHeight-50) +50;
+    
+    this.draw = function()
+    {
+        save();
+        translate(this.x, this.y);
+        circle(0,0,20,"red");
+        restore();
+    };
+}
+    
+    
+function start()
+{
+    minTomte = new Tomte();
+    minTomte.draw();
+}
+    
+
+
+
+
+
+</script>
