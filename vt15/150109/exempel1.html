@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="sv">
+    <head>
+    <meta charset="utf-8" />
+        <title>Exempel 1 Canvas</title>
+    
+        <style>
+            #minCanvas
+            {
+                border: 5px solid green;
+            }
+            #minCanvas2
+            {
+                border: 3px dotted yellow;
+            }
+        </style>
+    
+    </head>
+    
+    
+    <body>
+        <canvas id="minCanvas" width="500" height="400"></canvas>
+        <canvas id ="minCanvas2" width="100" height="100"></canvas>
+        
+        
+        <script src="http://spelprogrammering.nu/advanced.js">
+        </script>
+        
+        <script>
+            var rityta = new RoboroCanvas("minCanvas");
+            rityta.circle(100, 100, 50, "red");
+            
+            var rityta2 = new RoboroCanvas("minCanvas2");
+            rityta2.rectangle(20,20,30,20,"blue");
+        
+        </script>
+    
+    
+    
+    </body>
+</html>
+
+
+
+
+
